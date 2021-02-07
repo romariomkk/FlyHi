@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graph_search"
+    app:startDestination="@id/flightsSearch">
+
+    <fragment
+        android:id="@+id/flightsSearch"
+        android:name="com.romariomkk.search.ui.flights.FlightsSearchFragment"
+        android:label="Flights Search"
+        tools:layout="@layout/fragment_flights_search">
+        <argument
+            android:name="flightRequest"
+            app:argType="com.romariomkk.search.domain.pojo.FlightRequest" />
+
+        <action
+            android:id="@+id/toFlightDetail"
+            app:destination="@id/flightDetail" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/flightDetail"
+        android:name="com.romariomkk.search.ui.details.FlightDetailFragment"
+        android:label="Flight detail"
+        tools:layout="@layout/fragment_flight_detail">
+        <argument
+            android:name="flight"
+            app:argType="com.romariomkk.search.domain.pojo.Flight" />
+    </dialog>
+
+</navigation>

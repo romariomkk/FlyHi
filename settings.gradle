@@ -1,0 +1,5 @@
+include ':search'
+include ':core'
+include ':destinations'
+include ':app'
+rootProject.name='FlyHi Test Assignment'

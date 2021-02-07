@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FlyHi</string>
+
+    <string name="title_departure_from">Departure from</string>
+    <string name="title_travel_to">Travel to</string>
+    <string name="hint_select_date">Select date</string>
+    <string name="title_search">Search</string>
+    <string name="title_children">Children</string>
+    <string name="title_teens">Teens</string>
+    <string name="title_adults">Adults</string>
+</resources>

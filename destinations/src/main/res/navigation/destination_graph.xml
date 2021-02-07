@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/destination_graph"
+    app:startDestination="@id/destinationSelect">
+
+    <fragment
+        android:id="@+id/destinationSelect"
+        android:name="com.romariomkk.destinations.ui.DestinationListingFragment"
+        android:label="Search Destination"
+        tools:layout="@layout/fragment_destination_listing">
+        <argument
+            android:name="fromOrTo"
+            app:argType="com.romariomkk.destinations.ui.DestinationDirection" />
+    </fragment>
+
+</navigation>

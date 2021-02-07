@@ -1,0 +1,107 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.72'
+    ext.hilt_version = '2.31.2-alpha'
+    repositories {
+        google()
+        jcenter()
+        
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.3"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+ext {
+    appCompat = '1.2.0'
+    card_view = '1.0.0'
+    constrLayout = '2.1.0-alpha2'
+    coroutines = '1.4.2'
+    fragmentKtx = '1.3.0-alpha04'
+    koin_version = '2.1.5'
+    ktx = '1.3.2'
+    lifecycleVer = '2.2.0'
+    lifecycle_version = '2.2.0-alpha03'
+    navVer = '2.3.3'
+    okHttpVer = '4.9.0'
+    retrofitVer = '2.9.0'
+    roomVer = "2.3.0-alpha04"
+    rv = '1.1.0'
+    stetho = '1.5.1'
+    supportVer = '1.2.1'
+    timberVer = '4.7.1'
+
+    compileSdkVersion = 30
+    minSdkVersion = 21
+    targetSdkVersion = 30
+    buildToolsVersion = '30.0.2'
+    versionCode = 1
+    versionName = '1.0'
+
+    libs = [
+            coreKtx: "androidx.core:core-ktx:$ktx",
+            fragKtx: "androidx.fragment:fragment-ktx:$fragmentKtx",
+            okhttp: [
+                    "com.squareup.okhttp3:okhttp:$okHttpVer",
+                    "com.squareup.okhttp3:logging-interceptor:$okHttpVer"
+            ],
+            retrofit: [
+                    "com.squareup.retrofit2:retrofit:$retrofitVer",
+                    "com.squareup.retrofit2:converter-gson:$retrofitVer"
+            ],
+            nav: [
+                    "androidx.navigation:navigation-fragment-ktx:$navVer",
+                    "androidx.navigation:navigation-ui-ktx:$navVer"
+            ],
+            debugging: [
+                    stetho: "com.facebook.stetho:stetho-okhttp3:$stetho",
+                    timber: "com.jakewharton.timber:timber:$timberVer"
+            ],
+            coroutines: [
+                    "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
+                    "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+            ],
+            hilt: "com.google.dagger:hilt-android:$hilt_version",
+            hilt_compiler: "com.google.dagger:hilt-android-compiler:$hilt_version",
+            hilt_kt_compiler: 'androidx.hilt:hilt-compiler:1.0.0-alpha01',
+
+
+            room_compiler: "androidx.room:room-compiler:$roomVer",
+            room: [
+                    "androidx.room:room-runtime:$roomVer",
+                    "androidx.room:room-ktx:$roomVer"
+            ],
+
+            lifecycle_compiler: "androidx.lifecycle:lifecycle-compiler:$lifecycleVer",
+            lifecycle: [
+                    "androidx.lifecycle:lifecycle-extensions:$lifecycleVer",
+                    "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+                    "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
+                    "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVer"
+            ],
+            design: [
+                    "androidx.appcompat:appcompat:$appCompat",
+                    "androidx.constraintlayout:constraintlayout:$constrLayout",
+                    "androidx.recyclerview:recyclerview:$rv",
+                    "com.google.android.material:material:$supportVer",
+                    "androidx.cardview:cardview:$card_view"
+            ]
+    ]
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

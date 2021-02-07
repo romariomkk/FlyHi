@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'dagger.hilt.android.plugin'
+
+def ext = rootProject.extensions.getByName("ext")
+
+android {
+    compileSdkVersion ext.compileSdkVersion
+    buildToolsVersion ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.romariomkk.flyhigh"
+        minSdkVersion ext.minSdkVersion
+        targetSdkVersion ext.targetSdkVersion
+        versionCode ext.versionCode
+        versionName ext.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation(project(":core"))
+    implementation(project(":destinations"))
+    implementation(project(":search"))
+
+    kapt ext.libs.lifecycle_compiler
+    kapt ext.libs.room_compiler
+
+    implementation ext.libs.hilt
+    kapt ext.libs.hilt_compiler
+    kapt ext.libs.hilt_kt_compiler
+
+}

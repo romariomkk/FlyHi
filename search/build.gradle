@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs'
+    id 'dagger.hilt.android.plugin'
+}
+
+def ext = rootProject.extensions.getByName("ext")
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "AVAILABILITY_API", '"https://www.ryanair.com/api/booking/v4/en-gb/"'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation(project(":core"))
+    kapt ext.libs.lifecycle_compiler
+    kapt ext.libs.room_compiler
+
+    implementation ext.libs.hilt
+    kapt ext.libs.hilt_compiler
+    kapt ext.libs.hilt_kt_compiler
+}

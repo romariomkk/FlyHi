@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="flightRequest"
+            type="com.romariomkk.search.domain.pojo.FlightRequest" />
+
+        <variable
+            name="vm"
+            type="com.romariomkk.search.ui.flights.FlightsSearchVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.search.FlightsSearchFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackground"
+            android:elevation="4dp"
+            app:title="@{String.format(@string/format_destinations, flightRequest.departureName, flightRequest.arrivalName)}"
+            app:titleTextColor="@color/colorAccent"
+            tools:title="Kyiv Boryspil - Bologna" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackground">
+
+            <SeekBar
+                android:id="@+id/sbPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="1000"
+                android:maxHeight="4dp"
+                android:minHeight="4dp"
+                android:onStopTrackingTouch="@{() -> vm.searchFlights()}"
+                android:paddingVertical="24dp"
+                android:progress="@={vm.maxPrice}"
+                android:progressDrawable="@drawable/bg_price_slider"
+                android:thumbTint="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:progress="150" />
+
+            <TextView
+                android:id="@+id/tvPriceTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_max_price"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@id/tvPrice"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sbPrice" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:background="@color/colorBackground"
+                android:text="@{Integer.toString(vm.maxPrice)}"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/tvPriceTitle"
+                app:layout_constraintTop_toBottomOf="@id/sbPrice"
+                tools:text="150" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.romariomkk.core.ui.base.widget.EmptyErrorRV
+                android:id="@+id/rvFlights"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_flight" />
+
+            <TextView
+                android:id="@+id/tvEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="48dp"
+                android:background="@android:color/white"
+                android:gravity="center_horizontal"
+                android:padding="24dp"
+                android:text="@string/title_empty_flights_search"
+                android:textColor="@color/colorBackground"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/tvError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginVertical="48dp"
+                android:background="@android:color/white"
+                android:gravity="center_horizontal"
+                android:padding="24dp"
+                android:text="@string/error_connection"
+                android:textColor="@color/colorBackground"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:text="Some error should be shown within this view"
+                tools:visibility="visible" />
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>

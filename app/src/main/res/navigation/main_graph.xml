@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/start">
+
+    <fragment
+        android:id="@+id/start"
+        android:name="com.romariomkk.flyhigh.ui.main.StartFragment"
+        android:label="Start"
+        tools:layout="@layout/fragment_start">
+
+        <action
+            android:id="@+id/toDestinationSelect"
+            app:destination="@id/destination_graph">
+            <argument
+                android:name="fromOrTo"
+                app:argType="com.romariomkk.destinations.ui.DestinationDirection" />
+        </action>
+
+        <action
+            android:id="@+id/toFlightSearch"
+            app:destination="@id/graph_search">
+            <argument
+                android:name="flightRequest"
+                app:argType="com.romariomkk.search.domain.pojo.FlightRequest" />
+        </action>
+    </fragment>
+
+
+    <include app:graph="@navigation/destination_graph" />
+
+    <include app:graph="@navigation/graph_search" />
+
+</navigation>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:indeterminateTint="@android:color/white"
+            android:padding="48dp"
+            android:text="@string/error_connection"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            tools:text="Some error should be shown within this view" />
+    </FrameLayout>
+
+</layout>

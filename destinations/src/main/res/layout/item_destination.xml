@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="destination"
+            type="com.romariomkk.destinations.domain.pojo.Destination" />
+
+        <variable
+            name="isCountryHidden"
+            type="boolean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp">
+
+        <TextView
+            android:id="@+id/tvCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{destination.countryName}"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp"
+            android:visibility="@{isCountryHidden ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toTopOf="@id/tvCity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Gibraltar" />
+
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{destination.name}"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCountry"
+            tools:text="Gibraltar" />
+
+        <TextView
+            android:id="@+id/tvAirportCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{destination.code}"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="GIB" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

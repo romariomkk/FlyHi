@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_no_direct_flights">These 2 destinations aren\'t connected by a direct flight.\nSearch other locations</string>
+    <string name="title_empty_flights_search">We have not found any flight for this date, for current number of passengers and price limit.
+        \nTry to change your search criteria</string>
+
+    <string name="format_destinations">%s - %s</string>
+    <string name="format_infants_left">Infants left: %d</string>
+    <string name="format_fare_class">Fare class: %s</string>
+    <string name="format_discount">Discount: %d\%%</string>
+
+    <string name="format_flight_time">Flight time: %s</string>
+    <string name="format_price_currency">%s %s</string>
+    <string name="title_max_price">Max price:</string>
+</resources>

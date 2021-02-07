@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="flight"
+            type="com.romariomkk.search.domain.pojo.Flight" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/tvDeparture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{flight.departure}"
+            android:textColor="@color/colorBackground"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvDestination"
+            app:layout_constraintEnd_toStartOf="@id/tvInfants"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Kyiv Boryspil" />
+
+        <TextView
+            android:id="@+id/tvDestination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{flight.destination}"
+            android:textColor="@color/colorBackground"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvDeparture"
+            app:layout_constraintTop_toBottomOf="@id/tvDeparture"
+            tools:text="Bologna" />
+
+        <TextView
+            android:id="@+id/tvInfants"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/format_infants_left, flight.infantsLeft)}"
+            android:textColor="@color/colorBackground_halfOpaque"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/tvFareClass"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvDeparture"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Infants left: 8" />
+
+        <TextView
+            android:id="@+id/tvFareClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/format_fare_class, flight.fareClass)}"
+            android:textColor="@color/colorBackground_halfOpaque"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/tvDiscount"
+            app:layout_constraintEnd_toEndOf="@id/tvInfants"
+            app:layout_constraintTop_toBottomOf="@id/tvInfants"
+            tools:text="Fare class: T" />
+
+        <TextView
+            android:id="@+id/tvDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/format_discount, flight.fare.discountInPercent)}"
+            android:textColor="@color/colorBackground_halfOpaque"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tvInfants"
+            app:layout_constraintTop_toBottomOf="@id/tvFareClass"
+            tools:text="Discount percent: T" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

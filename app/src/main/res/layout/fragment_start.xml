@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.romariomkk.flyhigh.ui.main.StartVM" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:paddingHorizontal="48dp"
+        android:paddingTop="48dp"
+        tools:context=".ui.main.StartFragment">
+
+        <com.romariomkk.destinations.ui.widget.DestinationSelectView
+            android:id="@+id/dsvFrom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:destination="@{vm.departure}"
+            app:hint="@string/title_departure_from"
+            app:icon="@drawable/ic_departure" />
+
+        <View
+            android:id="@+id/vDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <com.romariomkk.destinations.ui.widget.DestinationSelectView
+            android:id="@+id/dsvTo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:destination="@{vm.arrival}"
+            app:hint="@string/title_travel_to"
+            app:icon="@drawable/ic_landing" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/white"
+            android:drawablePadding="16dp"
+            android:gravity="center_vertical"
+            android:hint="@string/hint_select_date"
+            android:padding="16dp"
+            android:textColor="@android:color/black"
+            android:visibility="@{vm.areAirportsSelected ? View.VISIBLE : View.GONE}"
+            app:drawableStartCompat="@drawable/ic_calendar"
+            app:textDate="@{vm.date}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="@{vm.areAirportsAndDateSelected ? View.VISIBLE : View.GONE}">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/tvAdults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_adults"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@id/npAdults"
+                    app:layout_constraintStart_toStartOf="@id/npAdults"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <NumberPicker
+                    android:id="@+id/npAdults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:descendantFocusability="blocksDescendants"
+                    android:theme="@android:style/Theme.NoTitleBar"
+                    android:value="@={vm.adults}"
+                    app:layout_constraintEnd_toStartOf="@id/npTeens"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvAdults" />
+
+                <TextView
+                    android:id="@+id/tvTeens"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_teens"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@id/npTeens"
+                    app:layout_constraintStart_toStartOf="@id/npTeens"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <NumberPicker
+                    android:id="@+id/npTeens"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:descendantFocusability="blocksDescendants"
+                    android:theme="@android:style/Theme.NoTitleBar"
+                    android:value="@={vm.teens}"
+                    app:layout_constraintEnd_toStartOf="@id/npChildren"
+                    app:layout_constraintStart_toEndOf="@id/npAdults"
+                    app:layout_constraintTop_toBottomOf="@id/tvTeens" />
+
+                <TextView
+                    android:id="@+id/tvChildren"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_children"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@id/npChildren"
+                    app:layout_constraintStart_toStartOf="@id/npChildren"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <NumberPicker
+                    android:id="@+id/npChildren"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:descendantFocusability="blocksDescendants"
+                    android:theme="@android:style/Theme.NoTitleBar"
+                    android:value="@={vm.children}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/npTeens"
+                    app:layout_constraintTop_toBottomOf="@id/tvChildren" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/btnSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@color/colorAccent"
+                android:onClick="@{() -> vm.collectFlightRequest()}"
+                android:text="@string/title_search"
+                android:textAllCaps="true"
+                android:textColor="@color/colorBackground" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
