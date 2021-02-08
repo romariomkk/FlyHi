@@ -1,7 +1,10 @@
 # FlyHi app showcase
 *Kotlin 100%*
 
-<p>![First content](animation.gif) ![Second content](animation_2.gif)</p>
+<p>
+<img src="animation.gif" width="250" height="500" />
+<img src="animation_2.gif" width="250" height="500" />
+</p>
 
 ### Architecture and 'glue':
 * Multi-modular app
