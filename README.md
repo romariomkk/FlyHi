@@ -1,10 +1,7 @@
 # FlyHi app showcase
 *Kotlin 100%*
 
-<p>
-<img src="animation.gif.mp4" alt="Here should be the screen-record" width="300" height="600">
-<img src="animation_2.gif.mp4" alt="Here should be the screen-record" width="300" height="600">
-</p>
+<p>![First content](animation.gif.mp4)![Second content](animation_2.gif.mp4)</p>
 
 ### Architecture and 'glue':
 * Multi-modular app
