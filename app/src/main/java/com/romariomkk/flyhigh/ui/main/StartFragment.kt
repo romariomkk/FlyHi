@@ -56,6 +56,15 @@ class StartFragment : BaseFragment<FragmentStartBinding, StartVM>() {
             vm = viewModel
             lifecycleOwner = viewLifecycleOwner
         }
+
+        with (viewModel) {
+            adults.observe(viewLifecycleOwner, Observer {
+                binding.npChildren.maxValue = it
+            })
+            flightRequest.observe(viewLifecycleOwner, Observer {
+                navController.navigate(StartFragmentDirections.toFlightSearch(it))
+            })
+        }
     }
 
     private val destinationResultListener =
@@ -66,18 +75,6 @@ class StartFragment : BaseFragment<FragmentStartBinding, StartVM>() {
                     result[Keys.KEY_DESTINATION] as Destination)
             }
         }
-
-    override fun onStart() {
-        super.onStart()
-        with (viewModel) {
-            adults.observe(viewLifecycleOwner, Observer {
-                binding.npChildren.maxValue = it
-            })
-            flightRequest.observe(viewLifecycleOwner, Observer {
-                navController.navigate(StartFragmentDirections.toFlightSearch(it))
-            })
-        }
-    }
 
     private val datePickDialogListener =
         DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
